@@ -1,0 +1,68 @@
+html
+  head
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js")
+    script(src="https://code.jquery.com/jquery-2.1.4.min.js", integrity="sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC", crossorigin="anonymous")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+    link(href="/voting_app/css/voting.css", rel="stylesheet", type="text/css")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/0.1.0/ng-google-chart.js" type="text/javascript")
+    script(src="/voting_app/js/voting.js", type="text/javascript")
+  body#MainWrap(ng-app="myApp", ng-controller="OptionsController as tab")
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navbar", aria-expanded="false", aria-controls="navbar")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(ng-hide="#{auth}", href="", ng-click="tab.setTab(1)") VOTE'M UP
+          a.navbar-brand(ng-show="#{auth}", href="", ng-click="tab.setTab(4)") VOTE'M UP
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li(ng-hide="#{auth}", ng-class="{ active:tab.isSet(1) }")
+              a(href="", ng-click="tab.setTab(1)") Home
+            li(ng-show="#{auth}", ng-class="{ active:tab.isSet(4) }")
+              a(href="", ng-click="tab.setTab(4)") Home
+          ul.nav.navbar-nav.navbar-right
+            li(ng-show="#{auth}")
+              a#userName
+                | #{username}
+            li(ng-show="#{auth}")
+              a(href="/logout") Logout
+    header.jumbotron
+      .container
+        h1.title Vote'M Up
+        p For polls n' stuff
+        div(ng-hide="#{auth}", ng-show="tab.isSet(1)")
+          #signup
+            a#login-btn.btn.btn-default.btn-github(href='/auth/github')
+              i.fa.fa-github
+                | Github Sign In
+        .user_options(ng-show="#{auth}")
+          a#new_poll_button.btn.btn-default(onclick="reset_new_poll()" ng-click="tab.setTab(4)") New Poll
+          a#my_polls.btn.btn-default(ng-click="populate(); tab.setTab(5)", ng-controller="all_polls") My Polls
+    .container(ng-hide="#{auth}", ng-show="tab.isSet(1)")
+      .row
+        .col-lg-12
+          .col-lg-4
+            span.glyphicon.glyphicon-plus
+            h2 Vote
+            p First you Vote
+          .col-lg-4
+            span.glyphicon.glyphicon-cloud
+            h2 'M
+            p Put a little 'M in it
+          .col-lg-4
+            span.glyphicon.glyphicon-star-empty
+            h2 Up
+            p Then you Up it.
+    .container
+      signup.form_info(ng-show="tab.isSet(2)")
+      login.form_info(ng-show="tab.isSet(3)")
+      div(ng-controller="all_polls")
+        polls(ng-show="tab.isSet(4)")
+        mypolls(ng-show="tab.isSet(5)")
+        polllink(ng-show="tab.isSet(8)")
+    script(type="text/javascript", src="common/ajax-functions.js")

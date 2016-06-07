@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js" integrity="sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href="/public/css/nightlife.css" rel="stylesheet" type="text/css">
+		<script src="/public/js/nightlife.js" type='text/javascript'></script>
+		<title>Nightlifely</title>
+	</head>
+    <body ng-app="myApp" class="mainWrap" ng-controller="MainCtrl">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="spacer">
+                <a class="title_brand" href="/logout">Logout</a>
+                </div>
+            </div>
+        </nav>
+        <h1>Nightlifely</h1>
+        <h5 id="error_message">Bar meet up bar place for bar meet people</h5>
+        <form id="user_form" ng-submit="search_location()">
+            <div class="user_options">
+                <input id="user_location" class="form-control user_search user_input" placeholder="Zip or Address">
+                <input class="btn btn-default" type="submit" value="Submit">
+            </div>
+        </form>
+        <h1>Top 5</h1>
+        <ul class="nav nav-tabs nav-stacked">
+            <div ng-repeat="business in businesses">
+                <li class="business">
+                    <img class="bar_image" ng-src="{{business.image_url}}" alt="bar">
+                    <div class="bar_details">
+                        <a class="bar_link" ng-href="{{business.mobile_url}}" target="_blank">{{business.name}}</a>
+                        <div class="attending">
+                             : {{business.total}} Going :
+                        </div>
+                        <button id="{{business.id}}" ng-disabled='disabled' ng-click="rsvp(business.id, $index)" class="rsvp hidden">
+                            RSVP
+                        </button>
+                        <button id="{{business.id}}_remove" ng-disabled='disabled' ng-click="rsvpRemove(business.id, $index)" class="rsvp_remove hidden">
+                            REMOVE RSVP
+                        </button>
+                    </div>
+                    <br>
+                    <div class="text">
+                    <p class="bar_snippet"><i class="bar_description">{{business.snippet_text}}</i></p>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </body>
+</html>

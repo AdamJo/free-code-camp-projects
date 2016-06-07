@@ -1,0 +1,16 @@
+<form name="form" ng-submit="login(form)" novalidate class="form ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-minlength">
+<div>
+	<div>Email</div>
+	<input type="text" name="email" id="login_mail">
+	<div>Password</div>
+	<input type="text" name="password" id="login_password">
+</div>
+<div id="signup">
+        <a ng-click="login()" class="btn btn-default">Login</a>
+        <a class="btn btn-default btn-github" href="/auth/github" id="login-btn">
+    		    <i class="fa fa-github">
+    		        Github Sign In
+    		    </i>
+        </a>
+</div>
+</form>

@@ -1,0 +1,118 @@
+.mainWrap {
+    margin : auto;
+    text-align : center;
+    min-width : 800px;
+    background : #FCFCFC;
+}
+
+a:hover, a:active {
+    color : #555;
+}
+
+.form-control {
+    width : 50%;
+    display : inline-block;
+}
+
+.bar_image {
+    float : left;
+}
+
+.business {
+    min-height : 100px;
+    width : 100%;
+}
+
+.bar_details {
+    margin : 0 0 0 120px;
+}
+
+.bar_link, .rsvp, .rsvp_remove, .attending, .off_bar_link {
+    float : left;
+    display : inline-block;
+}
+
+.bar_link {
+    margin : 3px 0 0 0;
+}
+
+.off_bar_link {
+    margin : 6px 0 0 0;
+}
+
+.rsvp, .rsvp_remove {
+    background : none;
+    border : 1px solid #CCC;
+    outline : none;
+    margin : 2px 0 0 8px;
+}
+
+.rsvp_remove {
+    background : rgba(128, 0, 0, .2);
+}
+
+.rsvp {
+    background : rgba(0, 128, 0, .2);
+}
+
+.attending {
+    background : none;
+    margin : 3px 0 0 6px;
+}
+
+.attending:focus {
+    outline : none;
+}
+
+.rsvp:active, .rsvp_remove:active {
+    background : #808080;
+}
+
+.loading {
+    background : #EFEFEF;
+}
+
+.nav-stacked {
+    text-align : center;
+    margin : auto;
+    width : 80%;
+}
+
+.bar_snippet, .bar_description {
+    text-align : left;
+}
+
+.text {
+    margin : 10px 0 0 120px;
+}
+
+.highlight {
+  border-color : red;
+  
+}
+
+.highlight:focus {
+    outline : none;
+    border-color : red;
+}
+
+.hidden {
+    display : none;
+}
+
+.title_brand {
+    padding: 15px 15px;
+    color: #777;
+    float : none;
+    height: 50px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.spacer {
+    margin : 20px;
+}
+
+.login-btn:hover {
+    background : #e6e6e6;
+}

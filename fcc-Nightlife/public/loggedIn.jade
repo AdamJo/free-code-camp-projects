@@ -1,0 +1,60 @@
+html
+  head
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js')
+    | &#x9;&#x9;
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js')
+    | &#x9;&#x9;
+    script(src='https://code.jquery.com/jquery-2.1.4.min.js', integrity='sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC', crossorigin='anonymous')
+    | &#x9;&#x9;
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+    | &#x9;&#x9;
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
+    | &#x9;&#x9;
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+    | &#x9;&#x9;
+    link(href='/public/css/nightlife.css', rel='stylesheet', type='text/css')
+    | &#x9;&#x9;
+    script(src='/public/js/nightlife.js', type='text/javascript')
+    | &#x9;&#x9;
+    title Nightlifely
+  |     
+  body.mainWrap(ng-app='myApp', ng-controller='MainCtrl')
+    nav.navbar.navbar-default
+      .container-fluid
+        .spacer
+          a.title_brand(href='/logout') Logout
+    |         
+    h1 Nightlifely
+    |         
+    h5#error_message Bar meet up bar place for bar meet people
+    |         
+    form#user_form(ng-submit='search_location()')
+      .user_options
+        input#user_location.form-control.user_search.user_input(placeholder='Zip or Address')
+        |                 
+        input.btn.btn-default(type='submit', value='Submit')
+    |         
+    h1 Top 5
+    |         
+    ul.nav.nav-tabs.nav-stacked
+      div(ng-repeat='business in businesses')
+        li.business
+          img.bar_image(ng-src='{{business.image_url}}', alt='bar')
+          |                     
+          .bar_details
+            a.bar_link(ng-href='{{business.mobile_url}}', target='_blank') {{business.name}}
+            |                         
+            .attending
+              | : {{business.total}} Going :
+            |                         
+            button.rsvp.hidden(id='{{business.id}}', ng-disabled='disabled', ng-click='rsvp(business.id, $index)')
+              | RSVP
+            |                         
+            button.rsvp_remove.hidden(id='{{business.id}}_remove', ng-disabled='disabled', ng-click='rsvpRemove(business.id, $index)')
+              | REMOVE RSVP
+          |                     
+          br
+          |                     
+          .text
+            p.bar_snippet
+              i.bar_description {{business.snippet_text}}

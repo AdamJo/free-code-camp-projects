@@ -1,0 +1,18 @@
+<div class='container new_polls'>
+    <form name='polls' onsubmit="post_poll()" ng-submit='populate()'>
+    <h3>New Poll</h3>
+    <strong>Name your poll.</strong>
+        <br>
+        <input type="text" class='same_title' placeholder="What is your favorite subreddit" required ng-modle='polls' id="poll_name">
+        <br>
+        <strong>Options</strong>
+        <div class="options" id="list_options">
+            <input class='new_poll' required ng-modle='polls' type="text" placeholder="Pics" >
+            <input class='new_poll' required ng-modle='polls' type="text" placeholder="Videos">
+        </div>
+    <div id="poll_submit">
+            <a onclick="add_options()" id="add_options" class="btn btn-default">More Options</a>
+            <button class="btn btn-default" type="submit" value="Submit"  ng-disabled="poll_form.$invalid">Submit</button>
+    </div>
+    </form>
+</div>

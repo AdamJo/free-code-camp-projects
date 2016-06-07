@@ -1,0 +1,42 @@
+html
+  head
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js')
+    | &#x9;&#x9;
+    script(src='https://code.jquery.com/jquery-2.1.4.min.js', integrity='sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC', crossorigin='anonymous')
+    | &#x9;&#x9;
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+    | &#x9;&#x9;
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
+    | &#x9;&#x9;
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+    | &#x9;&#x9;
+    link(href='/voting_app/css/voting.css', rel='stylesheet', type='text/css')
+    | &#x9;&#x9;
+    script(type='text/javascript', src='https://www.google.com/jsapi')
+    | &#x9;&#x9;
+    script(src='/voting_app/js/voting.js', type='text/javascript')
+    |     &#x9;
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/0.1.0/ng-google-chart.js', type='text/javascript')
+  body#MainWrap(ng-app='myApp')
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          a.navbar-brand(href='/') VOTE&apos;M UP
+          | &#x9;&#x9;&#x9;&#x9;&#x9;
+          ul.nav.navbar-nav
+            li
+              a#userName #{username}
+    | &#x9;
+    .poll_title.results_poll(ng-controller='grab_poll', novalidate='')
+      form(name='poll', ng-submit='submit(); chart(); tab_switch();', ng-show='tab')
+        h2#poll_headline {{title}}
+        | &#x9;    
+        div(ng-repeat='option in options')
+          label.option(for='radio_{{$index}}')
+            input(type='radio', required='', ng-click='selectedButton(option.name)', name='option', id='radio_{{$index}}')
+            | &#x9;    &#x9;&#x9;{{option.name}}
+        | &#x9;   &#x9;&#x9;
+        input.btn.btn-default.option_submit(type='submit', ng-disabled='!value_selected', value='Submit')
+      | &#x9;   &#x9;
+      .results_graph(ng-hide='tab')
+        .graph(google-chart='', chart='singlePoll', style='height:50%; width:100%;')

@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js" integrity="sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href="/voting_app/css/voting.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script type='text/javascript' src='/angular-chart/angular-chart.min.js'></script>
+		<script src="/voting_app/js/voting.js" type='text/javascript'></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/0.1.0/ng-google-chart.js" type="text/javascript"></script>
+	</head>
+<body ng-app="myApp" id="MainWrap">
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+					<a class="navbar-brand" href="/">VOTE'M UP</a>
+					<ul class="nav navbar-nav">
+						<li>
+							<a class='' id="userName">#{username}</a>
+						</li>
+					</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="poll_title results_poll" ng-controller="grab_poll" novalidate >
+		<form name='poll' ng-submit="submit(); chart(); tab_switch();" ng-show="tab">
+		<h2 id="poll_headline">{{title}}</h2>
+	    <div ng-repeat="option in options">
+	    		<label class="option" for="radio_{{$index}}">
+	    		<input type="radio" required ng-click="selectedButton(option.name)" name="option" id="radio_{{$index}}">
+	    		{{option.name}}
+	    		</label>
+	   	</div>
+	   		<input class="btn btn-default option_submit" type="submit" ng-disabled="!value_selected" value="Submit">
+	   	</form>
+	   	<div ng-hide="tab" class="results_graph">
+    		<div class="graph"  google-chart chart="singlePoll" style="height:50%; width:100%;"></div>
+    	</div>
+   	    </div>
+</div>
+</body>
+</html>

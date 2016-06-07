@@ -1,0 +1,12 @@
+<div class='container user_polls'>
+    <a class="pop_pool" ng-click="populate()" href=''>Don't see your poll? Try clicking me!</a>
+    <div ng-repeat="poll in polls">
+        <ul class="list-group list_poll">
+            <li ng-click="chart(poll)" class="list-group-item">{{poll.title}} 
+            <button ng-click="delete(poll.title)" class="btn delete">X</button>
+            <button ng-click="redo(poll)" class="btn redo">Redo</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="poll_graph" google-chart chart="singlePoll" style="height:30%; width:70%;"></div>

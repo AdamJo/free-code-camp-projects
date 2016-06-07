@@ -1,0 +1,5 @@
+{
+  "files": ["./core/**/*.{html,htm,css,js,ts}"],
+  "server" : { "baseDir" : "./core" },
+  "timestamps" : false
+}
