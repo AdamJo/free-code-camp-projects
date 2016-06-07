@@ -1,0 +1,17 @@
+>>> .main text {
+    font: 10px sans-serif;
+}
+>>> .axis line, .axis path {
+    shape-rendering: crispEdges;
+    stroke: black;
+    fill: none;
+}
+
+.toolTip {
+  margin : auto;
+  width : 60%;
+  height : 100px;
+}
+.graph {
+  text-align: center;
+}

@@ -1,0 +1,29 @@
+.graph {
+  text-align: center;
+}
+
+>>> .chart {
+  margin: 0px auto;
+  padding: 0px;
+  background-color: white;
+}
+
+>>> .chart rect {
+  fill: steelblue;
+}
+>>> rect:hover {
+  fill: lightblue;
+}
+>>> .axis text {
+  font: 15px sans-serif;
+}
+>>> .axis path,
+>>> .axis line {
+  fill: none;
+  stroke: #333;
+  shape-rendering: crispEdges;
+}
+
+>>> .toolTip {
+  background-color: lightblue;
+}
