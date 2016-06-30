@@ -1,4 +1,4 @@
-My freecodecamp.com projects. A Collection of HTML5, CSS, jQuery, Angular, Agnular2, and React web applications.
+My freecodecamp.com projects. A Collection of HTML5, CSS, jQuery, Angular, Angular2, and React web applications.
 
 Below are my codepen projects made for freecodecamp.com as well.
 
